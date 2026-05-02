@@ -46,6 +46,7 @@ title: 홈
 |---|---|
 | [효과적인 프롬프트 & CLAUDE.md](effective-prompting-and-claude-md.md) | Role Prompting · Few-shot · CoT |
 | [Skills & Remote Control](skills-and-remote-control.md) | 재사용 도구화 + 원격 제어 |
+| [Frontend Slides — 웹 프리젠테이션 만들기](frontend-slides-tutorial.md) | Skill로 슬라이드 생성·PPT 변환·배포 |
 
 ### 🟧 4부 · Git · 협업
 
@@ -74,6 +75,8 @@ title: 홈
 프롬프트가 어려워요 → 효과적인 프롬프트 & CLAUDE.md
     ↓
 나만의 도구가 필요해요 → Skills & Remote Control
+    ↓
+발표 자료를 빠르게 만들고 싶어요 → Frontend Slides
     ↓
 실전 적용해보기 → Spotify 데이터 분석
 ```
