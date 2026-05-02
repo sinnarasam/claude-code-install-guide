@@ -1,18 +1,21 @@
+---
+layout: default
+title: 홈
+---
+
 # Claude Code 강의 실습용 환경 구축 가이드 🚀
 
-> **Claude Code** 를 처음 만나는 분부터 **실전 활용** 까지 한국어로 안내하는 단계별 실습 시리즈예요.
+> **Claude Code** 를 처음 만나는 분부터 **실전 활용** 까지 한국어로 안내하는 단계별 실습 시리즈입니다.
 > 한 챕터씩 따라오시면 어느새 **AI와 함께 코딩하는 일상** 이 됩니다 🌱
-
-🌐 **웹에서 바로 보기:** <https://nara-claude-guides.github.io/claude-code-install-guide/>
 
 ---
 
-## 🎯 이 시리즈가 안내하는 것
+## 🎯 이 시리즈의 학습 목표
 
-- ✅ Claude Code **설치 · 인증** 부터 첫 세션까지 막힘없이
+- ✅ Claude Code **설치·인증** 부터 첫 세션까지 막힘없이 진행
 - ✅ **프롬프트 작성법** 으로 AI를 도구가 아닌 **파트너** 로 활용
 - ✅ **CLAUDE.md / Skills / Plugins** 로 본인 워크플로 자동화
-- ✅ **Vibe Coding** 으로 실전 데이터 분석까지 체득
+- ✅ 실전 데이터 분석까지 **Vibe Coding** 으로 체득
 
 ---
 
@@ -24,12 +27,12 @@
 |---|---|---|
 | 1-1 | [Claude Code 설치 가이드](<1-1. claude-code-install-guide.md>) | 설치 + 첫 인증 |
 | 1-2 | [API 키 설정](<1-2. api-key-setup.md>) | OAuth vs API 키 인증 |
-| 1-3 | [명령어 레퍼런스](1-3.claude_commands-reference.md) | 모든 슬래시 명령 정리 |
+| 1-3 | [명령어 레퍼런스](<1-3.claude_commands-reference.md>) | 모든 슬래시 명령 정리 |
 | 1-4 | [첫 대화 — Hello World](<1-4. first-conversation-hello-world.md>) | 첫 실습 시나리오 |
-| 1-5 | [Python 계산기 만들기](1-5.python-calculator-tutorial.md) | 점진적 개발 체득 |
-| 1-6 | [Claude HUD 설치](1-6.claude-hud-install-guide.md) | 상태바 플러그인 |
+| 1-5 | [Python 계산기 만들기](<1-5.python-calculator-tutorial.md>) | 점진적 개발 체득 |
+| 1-6 | [Claude HUD 설치](<1-6.claude-hud-install-guide.md>) | 상태바 플러그인 |
 
-### 🟦 2부 · 도구 · 인터페이스 이해
+### 🟦 2부 · 도구·인터페이스 이해
 
 | 가이드 | 주제 |
 |---|---|
@@ -88,11 +91,11 @@
 
 ## 📜 라이선스
 
-본 시리즈는 [Creative Commons BY-NC-ND 4.0](LICENSE) 라이선스에 따라 이용할 수 있어요.
+본 시리즈는 [Creative Commons BY-NC-ND 4.0](LICENSE) 라이선스에 따라 이용할 수 있습니다.
 
-- ✅ 개인 학습 · 수업 자료로 활용
+- ✅ 개인 학습·수업 자료로 활용
 - ❌ 상업적 이용
-- ❌ 수정 · 각색 후 재배포
+- ❌ 수정·각색 후 재배포
 
 저작자 표시: **sinnarasam (신나라) — Claude Code 강의 실습용 환경 구축 가이드 시리즈**
 
@@ -100,9 +103,9 @@
 
 ## 🔗 관련 링크
 
-- 🌐 [GitHub Pages 사이트](https://nara-claude-guides.github.io/claude-code-install-guide/)
+- 📦 [GitHub 저장소](https://github.com/nara-claude-guides/claude-code-install-guide)
 - 📚 [Claude Code 공식 문서](https://docs.claude.com/en/docs/claude-code/overview)
-- 💬 이슈 / 제안: [GitHub Issues](https://github.com/nara-claude-guides/claude-code-install-guide/issues)
+- 💬 이슈 / 제안: GitHub Issues
 
 ---
 
