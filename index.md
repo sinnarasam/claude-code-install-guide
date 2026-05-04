@@ -38,6 +38,7 @@ title: 홈
 |---|---|
 | [인터페이스 이해](claude_interface-overview.md) | 화면 구성 영역별 의미 |
 | [/status 읽는 법](status-reading-guide.md) | 환경 진단 보고서 해석 |
+| [CLI 필수 용어](cli-essentials.md) | Shell · 경로 · 파이프 · 권한 한 번에 정리 |
 | [IDE 연동](ide-integration.md) | VS Code · Cursor · JetBrains |
 
 ### 🟪 3부 · 효과적인 활용
@@ -112,5 +113,5 @@ title: 홈
 
 ---
 
-📅 마지막 업데이트: 2026.05.03
+📅 마지막 업데이트: 2026.05.04
 ✍️ Claude Code 강의 실습용 환경 구축 가이드 시리즈
