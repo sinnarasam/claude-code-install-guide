@@ -65,7 +65,21 @@ CLAUDE.md 의 13단 슬롯 순서를 그대로 따른다. 본문 번호 섹션�
 - 인증/로그인 자체의 깊은 설명은 다루지 않고 `claude_commands-reference.md` 로 링크.
 - 자동 스크린샷 / GIF 는 첨부하지 않는다 (시리즈 다른 가이드 관행과 동일).
 
-## 6. 검수 체크리스트
+## 6. 실측 검증 결과 (2026-05-05, claude v2.1.126)
+
+`claude remote-control` 을 실제로 실행해 확인한 사실. 초기 가이드에서 잘못 적었던 부분을 정정해 반영함.
+
+| 항목 | 초기 가이드 | 실측 |
+|------|------------|------|
+| 이름 지정 진입 | `claude --remote-control "이름"` ❌ (그런 플래그 없음) | `claude remote-control --name "이름"` ✅ |
+| 첫 실행 흐름 | 곧장 URL/QR 표시 ❌ | `Enable Remote Control? (y/n)` 동의 프롬프트 1회 |
+| 배너 형식 | `Connected. Session URL: ...` ❌ | `·✔︎· Connected · <project> · <branch>` + `Capacity: N/32` + `space to show QR · w to toggle spawn mode` |
+| 핫키 | `space` 만 언급 | `space` (QR), `w` (spawn 모드 토글) |
+| Spawn 모드 | 미언급 | `same-dir` / `worktree` / `session` 3종, `--capacity` 로 동시 세션 수 |
+
+위 항목을 본 가이드에 모두 반영함.
+
+## 7. 검수 체크리스트
 
 가이드 작성 후 다음을 확인:
 

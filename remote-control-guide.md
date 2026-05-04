@@ -146,8 +146,8 @@ Remote Control 을 켜기 전에 그 폴더에서 `claude` 를 한 번이라도 
 
 | 명령 | 시작 위치 | 언제 쓰면 좋을까 |
 |------|----------|-----------------|
-| `claude remote-control` | 셸 (서버 모드) | 데스크탑을 켜두고 **나갔다 올 때** |
-| `claude --remote-control "이름"` | 셸 (인터랙티브) | 평소처럼 작업하면서 **이름 붙여 시작** |
+| `claude remote-control` | 셸 (서버 모드, 단독 실행) | 데스크탑을 켜두고 **나갔다 올 때** |
+| `claude remote-control --name "이름"` | 셸 (이름 지정) | 세션 목록에서 **빨리 찾고 싶을 때** |
 | `/remote-control` | 이미 실행 중인 세션 | 작업하다가 **갑자기 자리 비울 때** |
 
 ### 🎬 시나리오별 명령
@@ -158,8 +158,8 @@ Remote Control 을 켜기 전에 그 폴더에서 `claude` 를 한 번이라도 
 # 패턴 A: 그냥 서버만 띄우기
 claude remote-control
 
-# 패턴 B: 이름 붙여 인터랙티브 시작
-claude --remote-control "side-project"
+# 패턴 B: 이름 붙여서 시작
+claude remote-control --name "side-project"
 
 # 패턴 C: 작업 중에 켜기 (Claude 안에서)
 /remote-control
@@ -170,29 +170,68 @@ claude --remote-control "side-project"
 ```powershell
 # PowerShell 에서도 동일한 명령
 claude remote-control
-claude --remote-control "side-project"
+claude remote-control --name "side-project"
 ```
 
 > 💡 셸이 다르더라도 명령은 동일해요. PowerShell 특유의 인용 처리만 주의하면 OK.
 
+### 🟢 처음 실행하면 동의 프롬프트가 떠요
+
+**첫 실행에 한해** 짧은 안내와 함께 `(y/n)` 동의를 한 번 받아요.
+
+```
+Remote Control lets you access this CLI session from the web (claude.ai/code)
+or the Claude app, so you can pick up where you left off on any device.
+
+You can disconnect remote access anytime by running /remote-control again.
+
+Enable Remote Control? (y/n)
+```
+
+`y` 입력 → 다음 화면으로 진행. 한 번 동의하면 같은 머신에서는 다시 안 물어봐요.
+
 ### 📱 모바일에서 연결 (QR 스캔)
 
-진입 명령을 실행하면 터미널에 **세션 URL** 과 **QR 코드** 가 표시돼요.
+동의 후 터미널에 **연결 상태 배너** 와 **세션 URL** 이 떠요. (실제 출력)
 
 ```
-Connected.
-Session URL : https://claude.ai/code/sessions/xxxxxxxx
-[QR 코드 박스]
+·✔︎· Connected · my-project · main
+    Capacity: 1/32 · New sessions will be created in the current directory
 
-Press <SPACE> to toggle QR.
+Continue coding in the Claude app or https://claude.ai/code?environment=env_xxxxxxxxxxxx
+space to show QR code · w to toggle spawn mode
 ```
 
-1. 폰의 Claude 앱 열기
-2. 좌상단 메뉴 → **"Scan to connect"** 또는 카메라 아이콘
-3. 터미널의 QR 코드 스캔
-4. 앱에 세션이 뜨면 메시지 입력 시작 ✨
+| 키 | 동작 |
+|----|------|
+| `space` | QR 코드 표시 ↔ 숨김 토글 |
+| `w` | spawn 모드 토글 (same-dir ⇄ worktree) |
+| `Ctrl+C` | 서버 종료 |
 
-> 💡 QR 이 너무 크면 스페이스바로 토글해서 끄고 URL 만 복사해도 돼요.
+1. 터미널에서 `space` 키 → QR 코드 표시
+2. 폰의 Claude 앱 열기
+3. 좌상단 메뉴 → **"Scan to connect"** 또는 카메라 아이콘
+4. 터미널의 QR 코드 스캔
+5. 앱에 세션이 뜨면 메시지 입력 시작 ✨
+
+> 💡 QR 없이 그냥 URL 만 복사해서 폰 브라우저에 붙여넣어도 돼요. 처음에는 QR 이 표시되지 않은 상태로 시작하니까 `space` 한 번 눌러주세요.
+
+### 🌳 Spawn 모드: 같은 폴더 vs 워크트리
+
+`w` 키로 토글하거나, 시작할 때 플래그로 고정할 수 있어요.
+
+| 모드 | 동작 | 언제 쓸까 |
+|------|------|----------|
+| `same-dir` (기본) | 모든 원격 세션이 **같은 폴더** 에서 동작 | 단일 흐름 작업, 1인 사용 |
+| `worktree` | 새 세션마다 **독립 git 워크트리** 생성 | 동시에 여러 브랜치 / 충돌 방지 |
+| `session` | 클래식 단일 세션 모드 (그 세션 종료 시 서버도 종료) | 1회용 빠른 연결 |
+
+```bash
+# 시작 시 고정
+claude remote-control --spawn worktree --capacity 8
+```
+
+> 💡 `--capacity` 는 동시 세션 최대치(기본 32). 워크트리 모드는 git 저장소가 필요해요.
 
 ### 🔁 매 세션 자동 활성화
 
@@ -354,6 +393,10 @@ claude.ai/code 의 세션 목록에서:
 ---
 
 ## 🆘 자주 막히는 지점
+
+### Q0. 처음 켰는데 `(y/n)` 만 뜨고 더 안 가요
+
+**정상이에요.** 첫 실행에만 한 번 묻는 동의 프롬프트예요. `y` 를 누르고 엔터를 치면 진행돼요. 다음부터는 같은 머신에서 안 물어봐요.
 
 ### Q1. `/remote-control` 이 메뉴에 안 떠요
 
